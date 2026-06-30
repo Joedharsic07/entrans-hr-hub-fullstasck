@@ -42,7 +42,24 @@ export class ServiceService {
     return this.httpClient.post(`${this.baseUrl}/validate-multiple-timesheets/`, validationData);
   }
   pushEmail(data: any) {
-  return this.httpClient.post(`${this.baseUrl}/push-email/`, data);
-}
+    return this.httpClient.post(`${this.baseUrl}/push-email/`, data);
+  }
+
+  getProjectUserRoles(params: { project_search?: string; user_search?: string; page?: number; page_size?: number } = {}): Observable<any> {
+    const httpParams: any = {};
+    if (params.project_search) httpParams.project_search = params.project_search;
+    if (params.user_search) httpParams.user_search = params.user_search;
+    if (params.page) httpParams.page = params.page;
+    if (params.page_size) httpParams.page_size = params.page_size;
+    return this.httpClient.get(`${this.baseUrl}/project-user-roles/`, { params: httpParams });
+  }
+
+  getProjectUsers(projectId: number, params: { user_search?: string; page?: number; page_size?: number } = {}): Observable<any> {
+    const httpParams: any = {};
+    if (params.user_search) httpParams.user_search = params.user_search;
+    if (params.page) httpParams.page = params.page;
+    if (params.page_size) httpParams.page_size = params.page_size;
+    return this.httpClient.get(`${this.baseUrl}/project-user-roles/${projectId}/`, { params: httpParams });
+  }
 
 }

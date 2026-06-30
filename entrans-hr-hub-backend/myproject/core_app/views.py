@@ -1641,3 +1641,126 @@ class PushTimesheetEmailView(APIView):
             "sent": success_emails,
             "failed": failed_emails,
         }, status=200 if not failed_emails else 207)
+
+
+class ProjectUserRolesView(APIView):
+    """Admin-only: Paginated project list with optional project name and user search filters."""
+
+    def get(self, request):
+        user = get_user_from_request(request)
+        if not user or not (user.is_staff or user.is_superuser):
+            return Response({"error": "Admin access required."}, status=status.HTTP_403_FORBIDDEN)
+
+        project_search = request.query_params.get('project_search', '').strip()
+        user_search = request.query_params.get('user_search', '').strip()
+
+        try:
+            page = max(1, int(request.query_params.get('page', 1)))
+            page_size = min(50, max(1, int(request.query_params.get('page_size', 10))))
+        except (ValueError, TypeError):
+            page = 1
+            page_size = 10
+
+        projects = Project.objects.all().order_by('name')
+
+        if project_search:
+            projects = projects.filter(name__icontains=project_search)
+
+        total_count = projects.count()
+        total_pages = max(1, (total_count + page_size - 1) // page_size)
+        page = min(page, total_pages)
+        offset = (page - 1) * page_size
+        projects = projects[offset: offset + page_size]
+
+        results = []
+        for project in projects:
+            assignments = UserProject.objects.filter(project=project).select_related('user')
+            if user_search:
+                assignments = assignments.filter(
+                    Q(user__name__icontains=user_search) |
+                    Q(user__email__icontains=user_search) |
+                    Q(role__icontains=user_search)
+                )
+            assignments = assignments.order_by('role', 'user__name')
+            users = [
+                {
+                    "user_id": up.user.id,
+                    "user_name": up.user.name,
+                    "email": up.user.email,
+                    "role": up.role,
+                }
+                for up in assignments
+            ]
+            results.append({
+                "project_id": project.id,
+                "project_name": project.name,
+                "user_count": UserProject.objects.filter(project=project).count(),
+                "users": users,
+            })
+
+        return Response({
+            "count": total_count,
+            "total_pages": total_pages,
+            "current_page": page,
+            "page_size": page_size,
+            "results": results,
+        }, status=status.HTTP_200_OK)
+
+
+class ProjectUsersView(APIView):
+    """Admin-only: Paginated user list for a specific project with optional user search filter."""
+
+    def get(self, request, project_id):
+        user = get_user_from_request(request)
+        if not user or not (user.is_staff or user.is_superuser):
+            return Response({"error": "Admin access required."}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            project = Project.objects.get(id=project_id)
+        except Project.DoesNotExist:
+            return Response({"error": "Project not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        user_search = request.query_params.get('user_search', '').strip()
+
+        try:
+            page = max(1, int(request.query_params.get('page', 1)))
+            page_size = min(50, max(1, int(request.query_params.get('page_size', 12))))
+        except (ValueError, TypeError):
+            page = 1
+            page_size = 12
+
+        assignments = UserProject.objects.filter(project=project).select_related('user')
+        if user_search:
+            assignments = assignments.filter(
+                Q(user__name__icontains=user_search) |
+                Q(user__email__icontains=user_search) |
+                Q(role__icontains=user_search)
+            )
+        assignments = assignments.order_by('role', 'user__name')
+
+        total_count = assignments.count()
+        total_pages = max(1, (total_count + page_size - 1) // page_size)
+        page = min(page, total_pages)
+        offset = (page - 1) * page_size
+        assignments = assignments[offset: offset + page_size]
+
+        users = [
+            {
+                "user_id": up.user.id,
+                "user_name": up.user.name,
+                "email": up.user.email,
+                "role": up.role,
+            }
+            for up in assignments
+        ]
+
+        return Response({
+            "project_id": project.id,
+            "project_name": project.name,
+            "count": total_count,
+            "total_pages": total_pages,
+            "current_page": page,
+            "page_size": page_size,
+            "users": users,
+        }, status=status.HTTP_200_OK)
+

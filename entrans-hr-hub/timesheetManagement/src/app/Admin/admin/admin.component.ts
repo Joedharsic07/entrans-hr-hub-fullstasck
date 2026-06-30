@@ -7,34 +7,40 @@ import { Router } from '@angular/router';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
-constructor(private router: Router) {}
-showTimesheetOptions: boolean = false;
-isAdmin :boolean =false
+  constructor(private router: Router) {}
 
-role=sessionStorage.getItem('role')
+  showTimesheetOptions: boolean = false;
+  isAdmin: boolean = false;
 
-ngOnInit(){
-if(this.role==="Admin") this.isAdmin=true
-}
+  role = sessionStorage.getItem('role');
 
+  ngOnInit() {
+    if (this.role === 'Admin') this.isAdmin = true;
+  }
 
-navigateToTimesheet() {
+  navigateToTimesheet() {
     this.showTimesheetOptions = false;
     this.router.navigate(['/timesheet']);
-}
-navigateToValidationTimesheet() {
+  }
+
+  navigateToValidationTimesheet() {
     this.showTimesheetOptions = false;
     this.router.navigate(['/validation-timesheet']);
   }
-  
-navigateToPpt() {
-  this.router.navigate(['/ppt-automation']);
-}
-navigateToUserTimesheets(){
-  this.router.navigate(['/user-timesheets'])
-}
-navigateToCreateProject() {
-  this.router.navigate(['/create-project']); 
-}
 
+  navigateToPpt() {
+    this.router.navigate(['/ppt-automation']);
+  }
+
+  navigateToUserTimesheets() {
+    this.router.navigate(['/user-timesheets']);
+  }
+
+  navigateToCreateProject() {
+    this.router.navigate(['/create-project']);
+  }
+
+  navigateToProjectMembers() {
+    this.router.navigate(['/project-members']);
+  }
 }

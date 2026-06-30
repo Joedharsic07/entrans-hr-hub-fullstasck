@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ServiceService } from '../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
+
 interface Entry {
   top_status?: any;
   user_id: number;
@@ -15,9 +15,8 @@ interface Entry {
   result?: any;
   validation_status?: string;
   timesheet_validations?: any[];
-  needs_rerun?: boolean; 
+  needs_rerun?: boolean;
   emailLoading?: boolean;
-
 }
 
 @Component({
@@ -27,17 +26,17 @@ interface Entry {
 })
 export class ValidationTimesheetComponent {
   data: Entry[] = [];
-  selectedMonth = new Date().toISOString().slice(0, 7); 
+  selectedMonth = new Date().toISOString().slice(0, 7);
   loading = false;
   selectAll = false;
 
+  constructor(private timesheetService: ServiceService, private toastrservice: ToastrService) {}
 
-  constructor(private timesheetService: ServiceService, private toastrservice:ToastrService) { }
-
- ngOnInit() {
-   this.fetchData()
+  ngOnInit() {
+    this.fetchData();
   }
-  fetchData(){
+
+  fetchData() {
      const [year, month] = this.selectedMonth.split('-');
     this.timesheetService.getUserProjects(month, year).subscribe(res => {
       const items: Entry[] = [];

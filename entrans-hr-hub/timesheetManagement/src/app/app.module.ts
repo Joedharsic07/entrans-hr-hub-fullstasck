@@ -24,6 +24,7 @@ import { UserTimesheetsComponent } from './Admin/user-timesheets/user-timesheets
 import { UserTimesheetsListComponent } from './Admin/user-timesheets-list/user-timesheets-list.component';
 import { CreateProjectComponent } from './Admin/create-project/create-project.component';
 import { ValidationTimesheetComponent } from './Admin/validation-timesheet/validation-timesheet.component';
+import { ProjectMembersComponent } from './Admin/project-members/project-members.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ValidationTimesheetComponent } from './Admin/validation-timesheet/valid
     UserTimesheetsComponent,
     UserTimesheetsListComponent,
     CreateProjectComponent,
-    ValidationTimesheetComponent
+    ValidationTimesheetComponent,
+    ProjectMembersComponent
   ],
   imports: [
     BrowserModule,

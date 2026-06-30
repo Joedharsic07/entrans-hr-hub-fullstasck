@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-
 from pathlib import Path
 from datetime import timedelta
 import os
 import sys
 from dotenv import load_dotenv
+
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,10 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core_app",
-    'rest_framework',
-    'corsheaders',
-    'rest_framework_simplejwt',
-    
+    "rest_framework",
+    "corsheaders",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -57,9 +56,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware'
+    "corsheaders.middleware.CorsMiddleware",
 ]
-CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = "myproject.urls"
 
 TEMPLATES = [
@@ -78,7 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "myproject.wsgi.application"
-AUTH_USER_MODEL = 'core_app.User'  
+AUTH_USER_MODEL = "core_app.User"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -133,54 +132,51 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
-print("DB USER:", os.getenv("DB_USER"))
-print("DB PASS:", os.getenv("DB_PASSWORD"))
-print("DB HOST:", os.getenv("DB_HOST"))
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'core_app.auth.EmailAuthBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "core_app.auth.EmailAuthBackend",
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ]
 }
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': 'your-256-bit-secret-key-here',  
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'TOKEN_TYPE_CLAIM': 'type',
-    'JTI_CLAIM': 'jti',
-    'REQUIRE_JTI': True,  
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": "your-256-bit-secret-key-here",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+    "TOKEN_TYPE_CLAIM": "type",
+    "JTI_CLAIM": "jti",
+    "REQUIRE_JTI": True,
 }
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
 CORS_ALLOW_ALL_ORIGINS = True
 
-JWT_PRIVATE_KEY_PATH = os.path.join(BASE_DIR, 'keys', 'private.pem')
-JWT_PUBLIC_KEY_PATH = os.path.join(BASE_DIR, 'keys', 'public.pem')
-os.makedirs(os.path.join(BASE_DIR, 'keys'), exist_ok=True)
-JWT_ISSUER = 'backend'
-JWT_ACCESS_TOKEN_EXPIRATION = 15  
+JWT_PRIVATE_KEY_PATH = os.path.join(BASE_DIR, "keys", "private.pem")
+JWT_PUBLIC_KEY_PATH = os.path.join(BASE_DIR, "keys", "public.pem")
+os.makedirs(os.path.join(BASE_DIR, "keys"), exist_ok=True)
+JWT_ISSUER = "backend"
+JWT_ACCESS_TOKEN_EXPIRATION = 15
 JWT_REFRESH_TOKEN_EXPIRATION_DAYS = 7
 
 DEBUG = True
@@ -191,23 +187,23 @@ PASSWORD_HASHERS = [
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
-TIME_ZONE = 'Asia/Kolkata'  
+TIME_ZONE = "Asia/Kolkata"
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"  
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-SMTP_SERVER = os.getenv('SMTP_SERVER') 
-SMTP_PORT = os.getenv('SMTP_PORT')
-SMTP_USERNAME = os.getenv('SMTP_USERNAME')
-SMTP_PASSWORD = os.getenv('SMTP_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+SMTP_SERVER = os.getenv("SMTP_SERVER")
+SMTP_PORT = os.getenv("SMTP_PORT")
+SMTP_USERNAME = os.getenv("SMTP_USERNAME")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 
 FRONTEND_BASE_URL = "http://localhost:4200"

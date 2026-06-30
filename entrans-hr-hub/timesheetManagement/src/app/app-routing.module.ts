@@ -15,6 +15,7 @@ import { UserTimesheetsComponent } from './Admin/user-timesheets/user-timesheets
 import { UserTimesheetsListComponent } from './Admin/user-timesheets-list/user-timesheets-list.component';
 import { CreateProjectComponent } from './Admin/create-project/create-project.component';
 import { ValidationTimesheetComponent } from './Admin/validation-timesheet/validation-timesheet.component';
+import { ProjectMembersComponent } from './Admin/project-members/project-members.component';
 
 const routes: Routes = [{
   path: '',
@@ -93,6 +94,12 @@ const routes: Routes = [{
   component: ValidationTimesheetComponent,
   canActivate: [AuthGuard],
   data: { roles: ['user', 'Admin'] }
+},
+{
+  path: 'project-members',
+  component: ProjectMembersComponent,
+  canActivate: [AuthGuard],
+  data: { roles: ['Admin'] }
 }
 ];
 
