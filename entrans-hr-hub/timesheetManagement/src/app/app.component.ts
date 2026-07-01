@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { LoginService } from './component/service/login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +12,35 @@ export class AppComponent {
   title = 'timesheetManagement';
   userName: string | null = null;
   userRole: string | null = null;
-  showHeader: boolean = true;
 
-  constructor(private router: Router) {
-    // Initialize user data
+  // Settings dropdown
+  showSettingsDropdown = false;
+
+  // Change password modal
+  showChangePwdModal = false;
+  cpForm = { old_password: '', new_password: '', confirm_password: '' };
+  cpLoading = false;
+  cpError = '';
+  cpSuccess = '';
+  showOldPwd = false;
+  showNewPwd = false;
+  showConfirmPwd = false;
+
+  constructor(private router: Router, private loginService: LoginService) {
     this.updateUserData();
-
-    // Update user data on route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       this.updateUserData();
+      this.showSettingsDropdown = false;
     });
   }
 
-  // Method to update user data from sessionStorage
+  @HostListener('document:click')
+  onDocumentClick() {
+    this.showSettingsDropdown = false;
+  }
+
   updateUserData() {
     this.userName = sessionStorage.getItem('name');
     this.userRole = sessionStorage.getItem('role');
@@ -38,8 +53,58 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-  openProfile() {
-    this.router.navigate(['/user-profile']);
+  toggleSettings() {
+    this.showSettingsDropdown = !this.showSettingsDropdown;
+  }
+
+  openChangePassword() {
+    this.showSettingsDropdown = false;
+    this.cpForm = { old_password: '', new_password: '', confirm_password: '' };
+    this.cpError = '';
+    this.cpSuccess = '';
+    this.showOldPwd = false;
+    this.showNewPwd = false;
+    this.showConfirmPwd = false;
+    this.showChangePwdModal = true;
+  }
+
+  closeChangePassword() {
+    this.showChangePwdModal = false;
+  }
+
+  submitChangePassword() {
+    this.cpError = '';
+    this.cpSuccess = '';
+
+    if (!this.cpForm.old_password || !this.cpForm.new_password || !this.cpForm.confirm_password) {
+      this.cpError = 'All fields are required.';
+      return;
+    }
+    if (this.cpForm.new_password.length < 8) {
+      this.cpError = 'New password must be at least 8 characters.';
+      return;
+    }
+    if (this.cpForm.new_password !== this.cpForm.confirm_password) {
+      this.cpError = 'New passwords do not match.';
+      return;
+    }
+
+    this.cpLoading = true;
+    this.loginService.changePassword({
+      old_password: this.cpForm.old_password,
+      new_password: this.cpForm.new_password
+    }).subscribe({
+      next: (res: any) => {
+        this.cpLoading = false;
+        this.cpSuccess = res.message || 'Password changed successfully.';
+        this.cpForm = { old_password: '', new_password: '', confirm_password: '' };
+        setTimeout(() => this.closeChangePassword(), 1500);
+      },
+      error: (err: any) => {
+        this.cpLoading = false;
+        this.cpError = err.error?.error || 'Failed to change password.';
+      }
+    });
   }
 
   shouldShowNavbar(): boolean {

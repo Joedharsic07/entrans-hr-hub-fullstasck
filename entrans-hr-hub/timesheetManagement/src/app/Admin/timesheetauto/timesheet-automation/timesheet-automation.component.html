@@ -10,24 +10,24 @@
     <app-sidebar></app-sidebar>
   </div>
 
-  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 w-full px-4 py-8 md:px-8 lg:px-12">
+  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 w-full px-4 py-5 md:px-7 lg:px-10">
     <div class="max-w-7xl mx-auto min-h-full flex flex-col justify-start">
 
       <!-- Upload/Validation Form (shown when no results) -->
       <div *ngIf="!result" class="flex-1 flex items-center justify-center">
         <div
-          class="bg-white rounded-2xl shadow-lg w-full max-w-2xl p-8 sm:p-12 border border-slate-200/60 relative overflow-hidden">
+          class="bg-white rounded-xl shadow-sm w-full max-w-2xl p-5 sm:p-7 border border-slate-200/60 relative overflow-hidden">
 
-          <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary"></div>
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
 
           <!-- Header with Icon -->
-          <div class="flex flex-col items-center mb-10 text-center">
+          <div class="flex flex-col items-center mb-5 text-center">
             <div
-              class="w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center shadow-inner border border-primary/20 mb-6">
-              <i class="bi bi-cloud-arrow-up text-primary text-5xl"></i>
+              class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20 mb-3">
+              <i class="bi bi-cloud-arrow-up text-primary text-2xl"></i>
             </div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">Timesheet Validation</h1>
-            <p class="text-slate-500 font-medium text-lg max-w-sm mx-auto">Upload your timesheet Excel file to automatically validate tracking issues and errors.</p>
+            <h1 class="text-xl font-extrabold text-slate-900 tracking-tight mb-1">Timesheet Validation</h1>
+            <p class="text-slate-500 font-medium text-sm max-w-sm mx-auto">Upload your timesheet Excel file to automatically validate tracking issues and errors.</p>
           </div>
 
           <!-- Upload Card -->

@@ -11,8 +11,8 @@
   </div>
 
   <!-- Main Content Area -->
-  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 p-6 md:p-8 lg:p-10">
-    <div class="max-w-7xl mx-auto flex flex-col gap-6">
+  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 p-4 md:p-6 lg:p-8">
+    <div class="max-w-7xl mx-auto flex flex-col gap-4">
 
       <!-- Back Button -->
       <div>
@@ -23,21 +23,21 @@
         </button>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-lg border border-slate-200/60 overflow-hidden flex flex-col">
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200/60 overflow-hidden flex flex-col">
 
         <!-- Document Header Area -->
-        <div class="p-6 md:p-8 border-b border-slate-200/60 bg-white relative">
-          <div class="absolute top-0 left-0 w-full h-1.5 bg-primary"></div>
+        <div class="p-4 md:p-5 border-b border-slate-200/60 bg-white relative">
+          <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
 
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div class="flex items-center gap-4">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex items-center gap-3">
               <div
-                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20 shadow-inner">
-                <i class="bi bi-folder-fill text-xl text-primary"></i>
+                class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20">
+                <i class="bi bi-folder-fill text-base text-primary"></i>
               </div>
               <div>
-                <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-1">Project Details</p>
-                <h2 class="text-2xl font-extrabold text-slate-900 m-0">{{ projectName || 'Detailed View' }}</h2>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Project</p>
+                <h2 class="text-lg font-extrabold text-slate-900 m-0">{{ projectName || 'Detailed View' }}</h2>
               </div>
             </div>
 

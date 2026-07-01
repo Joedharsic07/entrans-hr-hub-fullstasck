@@ -11,27 +11,27 @@
   </div>
 
   <!-- Main Content Area -->
-  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 w-full px-4 py-8 md:px-8 lg:px-12">
+  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 w-full px-4 py-5 md:px-7 lg:px-10">
     <div class="flex items-center justify-center min-h-full">
 
        <div
-        class="bg-white rounded-2xl shadow-lg w-full max-w-2xl p-8 sm:p-10 border border-slate-200/60 relative overflow-hidden">
+        class="bg-white rounded-xl shadow-sm w-full max-w-2xl p-5 sm:p-7 border border-slate-200/60 relative overflow-hidden">
 
         <!-- Top decorative accent -->
-        <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary"></div>
+        <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
 
-        <div class="mb-8 text-center sm:text-left flex items-center gap-4">
+        <div class="mb-5 text-center sm:text-left flex items-center gap-3">
           <div
-            class="hidden sm:flex w-12 h-12 rounded-xl bg-primary/10 items-center justify-center flex-shrink-0 shadow-inner">
-            <i class="bi bi-folder-plus text-primary text-2xl"></i>
+            class="hidden sm:flex w-9 h-9 rounded-lg bg-primary/10 items-center justify-center flex-shrink-0">
+            <i class="bi bi-folder-plus text-primary text-lg"></i>
           </div>
           <div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Create New Project</h2>
-            <p class="text-slate-500 font-medium text-sm mt-1">Configure details and assign team members.</p>
+            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Create New Project</h2>
+            <p class="text-slate-500 text-xs mt-0.5">Configure details and assign team members.</p>
           </div>
         </div>
 
-        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="space-y-4">
 
           <!-- Error Message Banner -->
           <div *ngIf="errorMessage"

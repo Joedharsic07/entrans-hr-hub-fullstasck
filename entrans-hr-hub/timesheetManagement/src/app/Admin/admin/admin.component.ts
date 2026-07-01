@@ -8,7 +8,7 @@ import { ServiceService } from '../Service/service.service';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
-  constructor(private router: Router, private service: ServiceService) {}
+  constructor(public router: Router, private service: ServiceService) {}
 
   showTimesheetOptions: boolean = false;
   isAdmin: boolean = false;
