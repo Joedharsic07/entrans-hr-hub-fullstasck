@@ -1,0 +1,46 @@
+/* ===== User Profile ===== */
+
+/* Profile banner gradient */
+.profile-banner {
+  background: linear-gradient(135deg, #1F3A5F 0%, #2D5A8E 100%);
+  position: relative;
+  overflow: hidden;
+}
+.profile-banner::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.profile-banner::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 40px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Avatar hover effect */
+.avatar-wrapper {
+  transition: transform 200ms cubic-bezier(0.34,1.56,0.64,1);
+}
+.avatar-wrapper:hover {
+  transform: scale(1.04);
+}
+
+/* Info grid items */
+.info-item {
+  padding: 12px;
+  border-radius: 10px;
+  transition: background-color 150ms ease;
+}
+.info-item:hover {
+  background-color: rgba(31,58,95,0.04);
+}

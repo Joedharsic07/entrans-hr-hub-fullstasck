@@ -1,0 +1,29 @@
+/* ===== Create Project ===== */
+
+/* Dropdown panel */
+.dropdown-panel {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  margin-top: 6px;
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.12), 0 2px 6px rgba(15,23,42,0.06);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* Chip / tag style */
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background-color: rgba(31,58,95,0.08);
+  border: 1px solid rgba(31,58,95,0.18);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1F3A5F;
+}

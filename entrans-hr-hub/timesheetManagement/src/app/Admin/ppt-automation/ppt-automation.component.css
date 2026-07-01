@@ -1,0 +1,19 @@
+/* ===== PPT Automation ===== */
+
+/* File input styling */
+input[type="file"]::file-selector-button {
+  height: 36px;
+  padding: 0 16px;
+  margin-right: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F3A5F;
+  background-color: rgba(31,58,95,0.08);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+input[type="file"]::file-selector-button:hover {
+  background-color: rgba(31,58,95,0.15);
+}

@@ -1,23 +1,22 @@
-.container-fluid {
-    background-color: #FFFFFF;
-    font-family: Arial, sans-serif;
-  }
-  
-  .eye-icon {
-    height: 20px;
-    width: 20px;
-    object-fit: contain;
-  }
-  
-  .container-fluid h3 {
-    font-weight: 400;
-    font-size: 22px;
-  }
-  
-  .container-fluid .clipart {
-    height: 30rem;
-  }
-  
+/* ===== Signup Page ===== */
+
+/* Card entrance animation */
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Main card */
+.signup-card {
+  animation: card-rise 280ms cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* Submit button lift effect */
+button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(31,58,95,0.30);
+}
+
   .container-fluid .formfield form {
     border-radius: 0.5rem;
     box-shadow: 0px 15px 20px 7px rgba(0, 0, 0, 0.1);
