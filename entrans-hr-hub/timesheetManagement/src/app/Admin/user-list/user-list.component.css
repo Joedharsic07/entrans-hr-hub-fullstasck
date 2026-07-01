@@ -1,0 +1,26 @@
+/* ===== User List Table ===== */
+tbody tr {
+  transition: background-color 100ms ease;
+}
+
+/* Avatar initial circle */
+.avatar-initial {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* Action buttons row */
+td:last-child > div {
+  opacity: 0.7;
+  transition: opacity 120ms ease;
+}
+tr:hover td:last-child > div {
+  opacity: 1;
+}

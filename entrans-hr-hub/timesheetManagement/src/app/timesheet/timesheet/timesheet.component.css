@@ -1,7 +1,7 @@
 /* Custom scrollbar for a cleaner look */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -9,38 +9,59 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 20px;
+  background-color: #CBD5E1;
+  border-radius: 100px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #94a3b8;
+  background-color: #94A3B8;
 }
 
-/* Weekend Row styling, seamlessly mixing with Tailwind */
+/* Weekend Row styling */
 .weekend-row {
-  background-color: #f8fafc !important; /* Tailwind slate-50 */
+  background-color: #FAFAFA !important;
 }
 
-/* Subtle pattern for weekend rows */
+/* Subtle diagonal stripes on weekend rows */
 .weekend-row td {
   background-image: repeating-linear-gradient(
-    45deg,
+    -45deg,
     transparent,
-    transparent 10px,
-    rgba(241, 245, 249, 0.7) 10px,
-    rgba(241, 245, 249, 0.7) 20px
+    transparent 8px,
+    rgba(241,245,249,0.6) 8px,
+    rgba(241,245,249,0.6) 16px
   );
 }
 
-.visibility-hidden {
-  visibility: hidden;
+/* Visibility helpers */
+.visibility-hidden { visibility: hidden; }
+.visibility-visible { visibility: visible; }
+
+/* Textarea focus styles */
+textarea:focus { outline: none; }
+
+/* Sidebar project items */
+aside .group {
+  transition: background-color 120ms ease, border-color 120ms ease;
 }
 
-.visibility-visible {
-  visibility: visible;
+/* Summary stat cards */
+main .grid > div {
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+main .grid > div:hover {
+  box-shadow: 0 4px 12px rgba(15,23,42,0.08);
 }
 
-textarea:focus {
-  outline: none;
+/* Table row transitions */
+tbody tr {
+  transition: background-color 100ms ease;
 }
+
+/* Inline input/textarea in table cells */
+td textarea,
+td input[type="number"] {
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  border-radius: 6px;
+}
+

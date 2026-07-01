@@ -1,0 +1,22 @@
+/* ===== Project Members ===== */
+
+/* Project card list */
+.project-card {
+  cursor: pointer;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+  transition: all 180ms cubic-bezier(0.4,0,0.2,1);
+}
+.project-card:hover {
+  border-color: rgba(31,58,95,0.35);
+  box-shadow: 0 4px 12px rgba(31,58,95,0.10);
+  transform: translateY(-1px);
+}
+.project-card.selected {
+  border-color: #1F3A5F;
+  background-color: rgba(31,58,95,0.04);
+  box-shadow: 0 0 0 2px rgba(31,58,95,0.15);
+}

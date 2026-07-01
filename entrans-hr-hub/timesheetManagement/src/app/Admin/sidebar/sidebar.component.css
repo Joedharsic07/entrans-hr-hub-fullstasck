@@ -1,3 +1,27 @@
+/* ===== Sidebar Global ===== */
 a, button {
   color: white;
+}
+
+/* Sidebar scrollbar */
+aside::-webkit-scrollbar { width: 4px; }
+aside::-webkit-scrollbar-track { background: transparent; }
+aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 100px; }
+aside::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+/* Sidebar nav links — smooth active indicator */
+aside a[routerLinkActive].bg-white\/15 {
+  border-left-width: 3px;
+  padding-left: 9px;
+}
+
+/* Dropdown sub-items hover */
+aside .ml-4 a:hover {
+  padding-left: 14px;
+}
+
+/* Bottom footer text */
+aside .mt-auto {
+  font-size: 11px;
+  letter-spacing: 0.04em;
 }

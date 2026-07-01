@@ -1,275 +1,31 @@
-.app-layout {
-  display: flex;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-}
+/* ===== User Timesheets List ===== */
 
-.sidebar {
-  width: 220px;
-  background: #f7f7f7;
-  padding: 40px 0px 0 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.logo img {
-  /* width: 40px; */
-  vertical-align: middle;
-}
-
-.logo h2 {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.nav a {
-  display: block;
-  margin: 1rem 0;
-  text-decoration: none;
-  color: #333;
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-.nav a.active {
-  background: #e7e7e7;
-  font-weight: bold;
-}
-
-.logout {
-  margin-top: auto;
-  color: red;
-  cursor: pointer;
-}
-
-.main-content {
-  flex-grow: 1;
-  padding: 1rem 2rem;
-  background: #fbfbfb;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
-  /* Or any background */
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-  /* Optional: spacing */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Optional: subtle shadow */
-}
-
-.header h1 {
-  font-size: 32px;
-}
-
-.profile {
-  text-align: right;
-}
-
-.profile small {
-  color: red;
-  font-size: 12px;
-  display: block;
-}
-
-.date-cell {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-  gap: 5px;
-}
-
-.date {
-  font-weight: bold;
-}
-
-.day {
-  font-size: 0.85em;
-  color: gray;
-}
-
-.timesheet-section {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  margin-top: 1rem;
-}
-
-.timesheet-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.timesheet-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.timesheet-table th {
-  border: 1px solid #eee;
-  text-align: left;
-  /* font-size: 1.2rem;
-  font-weight: bold; */
-}
-
-.timesheet-table td {
-  border: 1px solid #eee;
-  text-align: left;
-}
-
-.state-txt {
-  padding: 0.75rem;
-  border: none;
-  outline: none;
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1rem;
-  gap: 10px;
-}
-
-.btn {
-  padding: 0.6rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-primary {
-  border: 1px solid #ff4d4f;
-  background-color: #ff4d4f;
-  color: white;
-}
-
-.btn-secondary {
-  background-color: #ddd;
-}
-
-.popup-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.popup {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  min-width: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.popup-buttons {
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.desc-col {
-  width: 500px;
-  min-width: 250px;
-  font-weight: 600
-}
-
-.small-col {
-  width: 150px;
-  font-weight: 600
-}
-
-.med-col {
-  width: 200px;
-  font-weight: 600
-}
-
-.weekend-row .state-txt {
-  background-color: #f8f0f07d;
-}
-
+/* Weekend row highlight */
 .weekend-row {
-  background-color: #f8f0f07d;
+  background-color: #FAFAFA !important;
+}
+.weekend-row td {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(241,245,249,0.55) 8px,
+    rgba(241,245,249,0.55) 16px
+  );
 }
 
-.button-col {
-  border-radius: 0;
+/* Table row transitions */
+tbody tr {
+  transition: background-color 100ms ease;
 }
 
-.sidebar {
-  border-right: 1px solid #ddd;
+/* Inline table inputs */
+tbody td input,
+tbody td textarea,
+tbody td select {
+  transition: border-color 120ms ease, background-color 120ms ease,
+              box-shadow 120ms ease;
+  border-radius: 6px;
 }
 
-.list-group-item {
-  cursor: pointer;
-}
 
-.list-group-item:hover {
-  background-color: #f0f0f0;
-}
-
-.project-item {
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-
-.project-item:hover {
-  background-color: white;
-}
-
-.active-project {
-  background-color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.timesheet-card {
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.month-year {
-  font-size: 18px;
-}
-
-select.form-select {
-  min-width: 100px;
-}
-
-.timeSheet-container {
-  margin-left: 17%;
-}
-.compact-row {
-  line-height: 1.2;
-}
-.logo {
-  width: 9%;
-  height: 50px;
-} 
-.task_name{
-    font-weight: normal;
-    padding: .75rem;
-    border: none;
-    outline: none;
-}

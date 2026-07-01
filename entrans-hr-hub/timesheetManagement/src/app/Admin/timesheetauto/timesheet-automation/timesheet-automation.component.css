@@ -1,0 +1,22 @@
+/* ===== Timesheet Automation ===== */
+
+/* Upload drop zone hover */
+.upload-zone {
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+/* Results table hover */
+tbody tr {
+  transition: background-color 100ms ease;
+}
+
+/* Email body pre */
+pre {
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  line-height: 1.5;
+}
+
+/* Code editor area */
+.bg-slate-900 {
+  border-radius: 12px;
+}

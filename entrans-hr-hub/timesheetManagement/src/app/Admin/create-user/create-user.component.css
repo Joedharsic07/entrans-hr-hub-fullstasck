@@ -1,0 +1,12 @@
+/* ===== Create User ===== */
+
+/* Role radio labels hover */
+label:has(input[type="radio"]) {
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(31,58,95,0.25);
+}
