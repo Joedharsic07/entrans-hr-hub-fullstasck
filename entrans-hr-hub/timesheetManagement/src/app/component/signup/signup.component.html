@@ -1,192 +1,125 @@
-<div class="min-h-screen bg-slate-50 flex flex-col font-sans antialiased text-slate-800 relative overflow-hidden">
+<div class="min-h-screen bg-slate-100 flex items-center justify-center font-sans antialiased text-slate-800 p-4 sm:p-8">
 
-  <!-- Decorative background elements -->
-  <div
-    class="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none origin-top blur-3xl transform scale-150">
-  </div>
+  <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden">
 
-  <!-- Header Logo -->
-  <div class="relative z-10 pt-8 px-8 sm:px-12 flex items-center gap-3">
-    <img src="/assets/svg/Rectangle 90.svg" alt="Entrans Logo" class="h-10 w-auto" />
-    <div class="h-6 w-px bg-slate-300"></div>
-    <span class="text-slate-600 font-semibold text-sm tracking-wide uppercase">HR Hub Elite</span>
-  </div>
+    <!-- Left Panel: Form -->
+    <div class="bg-white flex flex-col p-8 sm:p-12">
 
-  <!-- Main Content -->
-  <div class="flex-1 flex items-center justify-center p-6 relative z-10 w-full max-w-6xl mx-auto py-12">
-
-    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-      <!-- Left Column: Form -->
-      <div class="flex flex-col items-center lg:items-start max-w-md mx-auto lg:mx-0 lg:ml-auto w-full">
-
-        <div class="w-full">
-          <h1 class="text-[32px] sm:text-[38px] font-bold text-slate-900 tracking-tight mb-2">Create Account</h1>
-          <p class="text-slate-500 text-base mb-8">Join HR Hub Elite to manage your timesheets easily.</p>
-
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-slate-200/60 p-8 sm:p-10 w-full relative overflow-hidden">
-            <!-- decorative accent line -->
-            <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary"></div>
-
-            <div class="mb-6">
-              <h2 class="text-xl font-bold text-slate-800">Sign Up</h2>
-            </div>
-
-            <form [formGroup]="signupForm" class="space-y-4">
-
-              <!-- User Name Field -->
-              <div>
-                <label for="user" class="block text-sm font-semibold text-slate-600 mb-1.5">User Name</label>
-                <input type="text" formControlName="name"
-                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-slate-800 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
-                  placeholder="Enter Name" />
-              </div>
-
-              <!-- Email Field -->
-              <div>
-                <label for="email" class="block text-sm font-semibold text-slate-600 mb-1.5">Email Address</label>
-                <input type="email" formControlName="email"
-                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-slate-800 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
-                  placeholder="name@company.com" />
-                <div class="mt-1" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('email')?.errors?.['required']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Email is required.
-                  </small>
-                </div>
-                <div class="mt-1" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.dirty">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('email')?.errors?.['email']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Invalid email format.
-                  </small>
-                </div>
-              </div>
-
-              <!-- Password Field -->
-              <div>
-                <label for="password" class="block text-sm font-semibold text-slate-600 mb-1.5">Password</label>
-                <div class="relative">
-                  <input [type]="isPasswordVisible ? 'text' : 'password'" id="password" formControlName="password"
-                    class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 pr-10 text-slate-800 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
-                    placeholder="••••••••" />
-                  <button type="button"
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none"
-                    (click)="isPasswordVisible = !isPasswordVisible">
-                    <i class="bi" [ngClass]="isPasswordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
-                  </button>
-                </div>
-                <div class="mt-1" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('password')?.errors?.['required']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Password is required.
-                  </small>
-                </div>
-                <div class="mt-1" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.dirty">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('password')?.errors?.['minlength']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Minimum 8 characters.
-                  </small>
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('password')?.errors?.['maxlength']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Maximum 12 characters.
-                  </small>
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('password')?.errors?.['pattern']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Invalid password format.
-                  </small>
-                </div>
-              </div>
-
-              <!-- Confirm Password Field -->
-              <div>
-                <label for="confirm_password" class="block text-sm font-semibold text-slate-600 mb-1.5">Confirm
-                  Password</label>
-                <div class="relative">
-                  <input [type]="isconfirm_passwordVisible ? 'text' : 'password'" id="confirm_password"
-                    formControlName="confirm_password"
-                    class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 pr-10 text-slate-800 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
-                    placeholder="••••••••" />
-                  <button type="button"
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none"
-                    (click)="isconfirm_passwordVisible = !isconfirm_passwordVisible">
-                    <i class="bi" [ngClass]="isconfirm_passwordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
-                  </button>
-                </div>
-                <div class="mt-1"
-                  *ngIf="signupForm.get('confirm_password')?.touched && signupForm.get('confirm_password')?.invalid">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1"
-                    *ngIf="signupForm.get('confirm_password')?.errors?.['required']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Password is required.
-                  </small>
-                </div>
-                <div class="mt-1"
-                  *ngIf="signupForm.get('confirm_password')?.invalid && signupForm.get('confirm_password')?.dirty">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1 block max-w-sm"
-                    *ngIf="signupForm.get('confirm_password')?.errors?.['pattern']">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    <span>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</span>
-                  </small>
-                </div>
-                <div class="mt-1"
-                  *ngIf="!passwordsMatch && !signupForm.get('confirm_password')?.hasError('required') && signupForm.get('confirm_password')?.touched">
-                  <small class="text-red-500 font-semibold text-xs flex items-center gap-1 mt-1">
-                    <i class="bi bi-exclamation-circle-fill"></i>
-                    Passwords do not match
-                  </small>
-                </div>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="pt-4">
-                <button type="submit" (click)="submit()" [disabled]="!signupForm.valid || isLoading || !passwordsMatch"
-                  class="w-full bg-primary hover:bg-primary-hover disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-4 focus:ring-primary/20">
-                  <span *ngIf="!isLoading">Register</span>
-                  <span *ngIf="isLoading" class="flex items-center gap-2">
-                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
-                      fill="none" viewBox="0 0 24 24">
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                      <path class="opacity-75" fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                      </path>
-                    </svg>
-                    Registering...
-                  </span>
-                </button>
-              </div>
-
-            </form>
-
-            <div class="mt-6 pt-5 border-t border-slate-200/60 text-center">
-              <p class="text-sm text-slate-500 font-semibold">
-                Already have an account?
-                <a href="/login"
-                  class="font-bold text-primary hover:text-primary-hover hover:underline focus:outline-none transition-colors">Login</a>
-              </p>
-            </div>
-          </div>
-        </div>
+      <!-- Logo -->
+      <div class="flex items-center gap-3 mb-10">
+        <img src="/assets/logo.png" alt="Entrans Logo" class="h-10 w-auto" />
+        <div class="h-5 w-px bg-slate-200"></div>
+        <span class="text-slate-500 font-semibold text-xs tracking-widest uppercase">HR Hub Elite</span>
       </div>
 
-      <!-- Right Column: Illustration -->
-      <div class="hidden lg:flex justify-center items-center w-full h-full pb-10">
-        <div class="relative w-full max-w-lg aspect-square">
-          <!-- Soft glowing backdrop for illustration -->
-          <div
-            class="absolute inset-0 bg-slate-200/50 rounded-full transform -rotate-12 scale-105 opacity-50">
-          </div>
-          <img src="/assets/loginLogo.png" alt="Login Illustration"
-            class="relative z-10 w-full h-full object-contain drop-shadow-xl filter brightness-105" />
+      <!-- Heading -->
+      <div class="mb-8">
+        <h1 class="page-title mb-1">Create Account</h1>
+        <p class="text-slate-500 text-sm">Join HR Hub Elite to manage your timesheets easily.</p>
+      </div>
+
+      <form [formGroup]="signupForm" class="space-y-4">
+
+        <!-- User Name Field -->
+        <div>
+          <label for="user" class="label-text">User Name</label>
+          <input type="text" formControlName="name"
+            class="form-input"
+            placeholder="Enter Name" />
         </div>
+
+        <!-- Email Field -->
+        <div>
+          <label for="email" class="label-text">Email Address</label>
+          <input type="email" formControlName="email"
+            class="form-input"
+            placeholder="name@company.com" />
+          <div class="mt-1.5 space-y-1" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1"
+              *ngIf="signupForm.get('email')?.errors?.['required']">
+              <i class="bi bi-exclamation-circle-fill"></i> Email is required.
+            </small>
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1"
+              *ngIf="signupForm.get('email')?.errors?.['email']">
+              <i class="bi bi-exclamation-circle-fill"></i> Invalid email format.
+            </small>
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div>
+          <label for="password" class="label-text">Password</label>
+          <div class="relative">
+            <input [type]="isPasswordVisible ? 'text' : 'password'" id="password" formControlName="password"
+              class="form-input pr-11"
+              placeholder="••••••••" />
+            <button type="button" (click)="isPasswordVisible = !isPasswordVisible"
+              class="absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+              <i class="bi" [ngClass]="isPasswordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+            </button>
+          </div>
+          <div class="mt-1.5 space-y-1" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('password')?.errors?.['required']"><i class="bi bi-exclamation-circle-fill"></i> Password is required.</small>
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('password')?.errors?.['minlength']"><i class="bi bi-exclamation-circle-fill"></i> Minimum 8 characters.</small>
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('password')?.errors?.['maxlength']"><i class="bi bi-exclamation-circle-fill"></i> Maximum 12 characters.</small>
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('password')?.errors?.['pattern']"><i class="bi bi-exclamation-circle-fill"></i> Invalid password format.</small>
+          </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div>
+          <label for="confirm_password" class="label-text">Confirm Password</label>
+          <div class="relative">
+            <input [type]="isconfirm_passwordVisible ? 'text' : 'password'" id="confirm_password"
+              formControlName="confirm_password"
+              class="form-input pr-11"
+              placeholder="••••••••" />
+            <button type="button" (click)="isconfirm_passwordVisible = !isconfirm_passwordVisible"
+              class="absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+              <i class="bi" [ngClass]="isconfirm_passwordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+            </button>
+          </div>
+          <div class="mt-1.5 space-y-1" *ngIf="signupForm.get('confirm_password')?.touched && signupForm.get('confirm_password')?.invalid">
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('confirm_password')?.errors?.['required']"><i class="bi bi-exclamation-circle-fill"></i> Password is required.</small>
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1" *ngIf="signupForm.get('confirm_password')?.errors?.['pattern']"><i class="bi bi-exclamation-circle-fill"></i> Password must contain uppercase, lowercase, number and special character.</small>
+          </div>
+          <div class="mt-1.5" *ngIf="!passwordsMatch && !signupForm.get('confirm_password')?.hasError('required') && signupForm.get('confirm_password')?.touched">
+            <small class="text-red-500 font-semibold text-xs flex items-center gap-1"><i class="bi bi-exclamation-circle-fill"></i> Passwords do not match.</small>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button type="submit" (click)="submit()" [disabled]="!signupForm.valid || isLoading || !passwordsMatch"
+            class="btn btn-primary btn-lg w-full">
+            <span *ngIf="!isLoading">Create Account</span>
+            <span *ngIf="isLoading" class="flex items-center gap-2">
+              <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Registering...
+            </span>
+          </button>
+        </div>
+
+      </form>
+
+      <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+        <p class="text-sm text-slate-500">
+          Already have an account?
+          <a href="/login" class="font-bold text-primary hover:text-primary-hover hover:underline focus:outline-none transition-colors">Login</a>
+        </p>
       </div>
 
     </div>
+
+    <!-- Right Panel: Image — same height as form card -->
+    <div class="hidden lg:block relative overflow-hidden">
+      <img src="/assets/loginLogo.png" alt="Sign Up Illustration"
+        class="absolute inset-0 w-full h-full object-cover" />
+    </div>
+
   </div>
+
 </div>

@@ -13,6 +13,9 @@ export class AppComponent {
   userName: string | null = null;
   userRole: string | null = null;
 
+  // Mobile sidebar
+  showMobileSidebar = false;
+
   // Settings dropdown
   showSettingsDropdown = false;
 
@@ -55,6 +58,10 @@ export class AppComponent {
 
   toggleSettings() {
     this.showSettingsDropdown = !this.showSettingsDropdown;
+  }
+
+  toggleMobileSidebar() {
+    this.showMobileSidebar = !this.showMobileSidebar;
   }
 
   openChangePassword() {

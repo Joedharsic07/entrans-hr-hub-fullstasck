@@ -149,7 +149,7 @@
   class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-[200] p-4"
   (click)="closeChangePassword()">
 
-  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md border border-slate-200 overflow-hidden"
+  <div class="card !p-0 w-full max-w-md overflow-hidden"
     (click)="$event.stopPropagation()">
 
     <!-- Modal Header -->
@@ -158,7 +158,7 @@
         <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
           <i class="bi bi-shield-lock text-primary text-base"></i>
         </div>
-        <h2 class="text-lg font-bold text-slate-800">Change Password</h2>
+        <h2 class="card-title">Change Password</h2>
       </div>
       <button (click)="closeChangePassword()"
         class="text-slate-700 hover:text-slate-900 hover:bg-slate-100 p-2 rounded-full transition-colors focus:outline-none">
@@ -187,11 +187,11 @@
 
         <!-- Current Password -->
         <div>
-          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Current Password</label>
+          <label class="label-text">Current Password</label>
           <div class="relative">
             <input [(ngModel)]="cpForm.old_password" name="old_password"
               [type]="showOldPwd ? 'text' : 'password'" placeholder="Enter current password"
-              class="w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm" />
+              class="form-input pr-10" />
             <button type="button" (click)="showOldPwd = !showOldPwd"
               class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-900 focus:outline-none">
               <i [class]="showOldPwd ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
@@ -201,11 +201,11 @@
 
         <!-- New Password -->
         <div>
-          <label class="block text-sm font-semibold text-slate-700 mb-1.5">New Password</label>
+          <label class="label-text">New Password</label>
           <div class="relative">
             <input [(ngModel)]="cpForm.new_password" name="new_password"
               [type]="showNewPwd ? 'text' : 'password'" placeholder="Minimum 8 characters"
-              class="w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm" />
+              class="form-input pr-10" />
             <button type="button" (click)="showNewPwd = !showNewPwd"
               class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-900 focus:outline-none">
               <i [class]="showNewPwd ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
@@ -215,11 +215,11 @@
 
         <!-- Confirm New Password -->
         <div>
-          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Confirm New Password</label>
+          <label class="label-text">Confirm New Password</label>
           <div class="relative">
             <input [(ngModel)]="cpForm.confirm_password" name="confirm_password"
               [type]="showConfirmPwd ? 'text' : 'password'" placeholder="Repeat new password"
-              class="w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm" />
+              class="form-input pr-10" />
             <button type="button" (click)="showConfirmPwd = !showConfirmPwd"
               class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-700 hover:text-slate-900 focus:outline-none">
               <i [class]="showConfirmPwd ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
@@ -230,12 +230,11 @@
         <!-- Actions -->
         <div class="flex gap-3 pt-2">
           <button type="button" (click)="closeChangePassword()"
-            class="flex-1 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-100 transition-colors focus:outline-none"
-            style="border: 1.5px solid #000; color: #000; background: #fff;">
+            class="btn btn-secondary flex-1">
             Cancel
           </button>
           <button type="submit" [disabled]="cpLoading"
-            class="flex-1 py-2.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2">
+            class="btn btn-primary flex-1">
             <span *ngIf="cpLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
             <span>{{ cpLoading ? 'Saving...' : 'Change Password' }}</span>
           </button>

@@ -10,13 +10,13 @@
     <app-sidebar></app-sidebar>
   </div>
 
-  <div class="flex-1 overflow-x-hidden overflow-y-auto relative z-10 w-full px-4 py-5 md:px-7 lg:px-10">
-    <div class="max-w-7xl mx-auto min-h-full flex flex-col justify-start">
+  <div class="main-content-wrapper">
+    <div class="mx-auto min-h-full flex flex-col justify-start">
 
       <!-- Upload/Validation Form (shown when no results) -->
       <div *ngIf="!result" class="flex-1 flex items-center justify-center">
         <div
-          class="bg-white rounded-xl shadow-sm w-full max-w-2xl p-5 sm:p-7 border border-slate-200/60 relative overflow-hidden">
+          class="bg-white rounded-xl shadow-sm w-full p-5 sm:p-7 border border-slate-200/60 relative overflow-hidden">
 
           <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
 
